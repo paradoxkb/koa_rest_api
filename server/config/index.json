@@ -1,0 +1,10 @@
+{
+    "PORT": "8000",
+    "MONGO_URL": "",
+    "POSTGRES_URL": "",
+    "JWT_SALT": "test_salt",
+    "JWT_CONFIG": {
+        "algorithm": "HS256",
+        "expiresIn": "2 days"
+    }
+}

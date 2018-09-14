@@ -1,0 +1,41 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
+    "crypto": "^1.0.1",
+    "flow-bin": "^0.77.0",
+    "jsonwebtoken": "^8.3.0",
+    "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
+    "koa-router": "^7.4.0",
+    "mocha": "^5.2.0",
+    "pg": "^7.4.3",
+    "sequelize": "^4.38.0",
+    "sqlite3": "^4.0.2",
+    "util": "^0.11.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "chai": "^4.1.2",
+    "eslint": "^5.2.0",
+    "eslint-config-canonical": "^11.0.0",
+    "eslint-config-fbjs": "^2.0.1",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-relay": "0.0.26",
+    "request": "^2.87.0"
+  },
+  "scripts": {
+    "start": "babel-node ./server/index.js",
+    "test": "NODE_ENV=test mocha --compilers js:babel-core/register --recursive"
+  },
+  "author": "paradoxoflife",
+  "license": "ISC"
+}

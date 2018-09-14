@@ -1,0 +1,5 @@
+{
+  "postgres_user": "admin",
+  "postgres_pswd": "qwerty1",
+  "postgres_url": "172.17.0.2"
+}
