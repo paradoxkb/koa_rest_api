@@ -4,11 +4,12 @@ const { promisify } = require('util');
 
 const asyncPost = promisify(request.post);
 const asyncPatch = promisify(request.patch);
+const asyncGet = promisify(request.get);
 const baseUrl = 'http://localhost:8000';
 
 const taskPattern = {
 	title: 'task 1',
-	description: 'task\'s description',
+	details: 'task\'s details',
 	status: '',
 };
 
@@ -28,7 +29,13 @@ describe('Task', () => {
 		});
 
 		it('should\'t create task without title', async () => {
-			const create = await asyncPost(`${baseUrl}/tasks`, { json: { description: 'short' }});
+			const create = await asyncPost(`${baseUrl}/tasks`, { json: { details: 'short' }});
+
+			expect(create.statusCode).to.equal(400);
+		});
+
+		it('should\'t create task without details', async () => {
+			const create = await asyncPost(`${baseUrl}/tasks`, { json: { title: 'short' }});
 
 			expect(create.statusCode).to.equal(400);
 		});
@@ -38,6 +45,14 @@ describe('Task', () => {
 
 			expect(update.statusCode).to.equal(200);
 			expect(update.body.status).to.equal('progress');
+		});
+
+		it('get tasks, expect 1', async () => {
+			const getData = await asyncGet(`${baseUrl}/tasks`);
+			const tasks = JSON.parse(getData.body);
+
+			expect(getData.statusCode).to.equal(200);
+			expect(tasks.length).to.equal(1);
 		});
 	});
 });

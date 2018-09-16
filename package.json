@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "babel-node ./server/index.js",
-    "test": "NODE_ENV=test mocha --compilers js:babel-core/register --recursive"
+    "test": "NODE_ENV=test mocha --compilers js:babel-core/register -w --recursive"
   },
   "author": "paradoxoflife",
   "license": "ISC"

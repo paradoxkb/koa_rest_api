@@ -10,10 +10,10 @@ const taskSchema = {
 		autoIncrement: true
 	},
 	title: {
-		type: STRING,
+		type: STRING(255),
 		allowNull: false
 	},
-	description: {
+	details: {
 		type: STRING(1000),
 		allowNull: false
 	},
@@ -33,14 +33,13 @@ const taskSchema = {
 	}
 };
 
-class Task {
-	constructor(props) {
-		const { db } = props
+const TaskModel = db => {
+	const table = db.define('tasks', taskSchema);
 
-		if (!db) throw Error('db and SubTask required');
+	// hard reset table in db
+	// table.sync({force: true})
 
-		this.model = db.define('tasks', taskSchema);
-	}
-}
+	return table;
+};
 
-module.exports = Task;
+module.exports = TaskModel;

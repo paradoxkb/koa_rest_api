@@ -2,7 +2,6 @@
 const Sequelize = require('sequelize');
 
 const creds = require('./config/creds.json');
-const TaskModel = require('./models/Task');
 
 const connectionSettings = process.env.NODE_ENV === 'test' ?
 	{ dialect: 'sqlite' } :
@@ -28,5 +27,5 @@ if (process.env.NODE_ENV !== 'test') db.sync();
 
 module.exports = {
 	db,
-	Task: new TaskModel({ db }).model,
+	Task: require('./models/Task')(db),
 };

@@ -15,7 +15,9 @@ router.post('/tasks', async (ctx) => {
 		const task = ctx.request.body;
 
 		// note: next checking and definition are only for tests, because in memory-store table hasn't schema
-		if (!task.title) throw new Error('Title is required');
+		if (!task.title || !task.details) {
+			throw new Error('Title is required');
+		}
 		task.status = 'new';
 
 		ctx.body = await Task.create(task);
